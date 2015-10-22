@@ -12,7 +12,6 @@
 
 ###Минимальные требования:
 * Django версии 1.5 или выше
-* South версии 1.0 или выше
 * lxml версии 3.3.4
 
 ###Установка модуля
@@ -30,8 +29,7 @@
 ```
 * Выполнить синхронизацию с БД:
 ```
-        python manage.py syncdb
-        python manage.py migrate # для тех, кто использует south
+        python manage.py migrate
 ```
 * Добавить в ``urls.py``:
 ```

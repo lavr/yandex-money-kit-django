@@ -5,7 +5,7 @@ from distutils.core import setup
 from setuptools import find_packages
 
 __author__ = 'Yandex.Money'
-__version__ = '1.1.2'
+__version__ = '1.2'
 
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
@@ -33,7 +33,6 @@ setup(
     ],
     install_requires=[
         'Django>=1.4',
-        'South>=0.7.5',
         'lxml>=2.3.4',
     ],
 )

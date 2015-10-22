@@ -9,6 +9,10 @@ from .signals import payment_process
 from .signals import payment_completed
 
 
+def default_uuid_value():
+    return str(uuid4()).replace('-', '')
+
+
 class Payment(models.Model):
     class STATUS:
         PROCESSED = 'processed'
@@ -33,7 +37,7 @@ class Payment(models.Model):
         PB = 'PB'
         QW = 'QW'
         QP = 'QP'
-		  
+
         CHOICES = (
             (PC, u'Кошелек Яндекс.Деньги'),
             (AC, u'Банковская карта'),
@@ -69,7 +73,7 @@ class Payment(models.Model):
         u'Номер витрины', default=settings.YANDEX_MONEY_SCID)
     customer_number = models.CharField(
         u'Идентификатор плательщика', max_length=64,
-        default=lambda: str(uuid4()).replace('-', ''))
+        default=default_uuid_value)
     order_amount = models.DecimalField(
         u'Сумма заказа', max_digits=15, decimal_places=2)
 
@@ -81,7 +85,7 @@ class Payment(models.Model):
         choices=PAYMENT_TYPE.CHOICES)
     order_number = models.CharField(
         u'Номер заказа', max_length=64,
-        default=lambda: str(uuid4()).replace('-', ''))
+        default=default_uuid_value)
     cps_email = models.EmailField(
         u'Email плательщика', max_length=100, blank=True, null=True)
     cps_phone = models.CharField(
